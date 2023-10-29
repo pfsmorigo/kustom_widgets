@@ -1,8 +1,7 @@
-default: SmowPanel.kwgt
+default: SmowPanel.kwgt SmowWatch.kwch
 
-SmowPanel.kwgt:
-	cd SmowPanel && zip $@ * && mv $@ ..
+%.kwgt %.kwch: %
+	cd $< && zip -r $@ * && mv $@ ..
 
 clean:
-	$(RM) *.kwgt
-
+	$(RM) *.kwgt *.kwch

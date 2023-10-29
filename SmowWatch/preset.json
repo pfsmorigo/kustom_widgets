@@ -1,0 +1,611 @@
+{
+  "preset_info": {
+    "version": 13,
+    "title": "SmowWatch",
+    "description": "",
+    "author": "Paulo Flabiano Smorigo",
+    "email": "pfsmorigo@gmail.com",
+    "width": 1080,
+    "height": 1080,
+    "features": "",
+    "release": 374328615,
+    "locked": false,
+    "pflags": 0
+  },
+  "preset_root": {
+    "internal_type": "RootLayerModule",
+    "globals_list": {
+      "color": {
+        "index": 1,
+        "type": "LIST",
+        "title": "Color",
+        "description": "Not a fan of Material You? Try something else!",
+        "entries": "Material You, Custom Color",
+        "value": "Material You"
+      },
+      "custom": {
+        "index": 2,
+        "type": "COLOR",
+        "title": "Custom",
+        "description": "Choose your custom color here if selected.",
+        "value": "#FFFFFFFF"
+      },
+      "a14": {
+        "index": 3,
+        "type": "FOLDER",
+        "title": "A14"
+      },
+      "a14/ac": {
+        "index": 8,
+        "type": "COLOR",
+        "title": "Ac",
+        "global_formula": "$si(sysca1, 80)$",
+        "toggles": 10
+      }
+    },
+    "viewgroup_items": [
+      {
+        "internal_type": "ShapeModule",
+        "shape_width": 720.0,
+        "paint_color": "#FF000000",
+        "internal_title": "BG (Ambient)"
+      },
+      {
+        "internal_type": "OverlapLayerModule",
+        "internal_title": "Clock (Ambient)",
+        "viewgroup_items": [
+          {
+            "internal_type": "TextModule",
+            "text_family": "kfile://org.kustom.provider/fonts/Ubuntu.ttf",
+            "text_size": 180.0
+          }
+        ]
+      },
+      {
+        "internal_type": "OverlapLayerModule",
+        "internal_animations": [
+          {
+            "type": "UNLOCK",
+            "action": "FADE",
+            "delay": 0.0,
+            "duration": 10.0
+          },
+          {
+            "type": "UNLOCK",
+            "action": "ADVANCED",
+            "animator": [
+              {
+                "position": 0,
+                "value": 0.0,
+                "property": "Y_OFFSET",
+                "ease": "STRAIGHT"
+              },
+              {
+                "position": 100,
+                "value": 100.0,
+                "property": "Y_OFFSET",
+                "ease": "STRAIGHT"
+              }
+            ],
+            "duration": 10.0
+          }
+        ],
+        "internal_toggles": {
+          "1": 0
+        },
+        "internal_title": "BG (Interactive)",
+        "viewgroup_items": [
+          {
+            "internal_type": "ShapeModule",
+            "shape_type": "CIRCLE",
+            "shape_width": 720.0,
+            "paint_color": "#FF000000",
+            "internal_title": "Black"
+          },
+          {
+            "internal_type": "ShapeModule",
+            "internal_toggles": {
+              "paint_color": 10
+            },
+            "internal_formulas": {
+              "paint_color": "$if(gv(color) = \"Material You\", gv(A14/Ac), (ce(gv(Custom), lum, a100)))$"
+            },
+            "shape_type": "CIRCLE",
+            "shape_width": 1000.0,
+            "shape_height": 720.0,
+            "shape_corners": 360,
+            "paint_color": "#FFE188FF",
+            "fx_gradient": "RADIAL",
+            "fx_gradient_offset_y": 55,
+            "position_padding_top": 750.0,
+            "internal_title": "Color"
+          }
+        ]
+      },
+      {
+        "internal_type": "OverlapLayerModule",
+        "internal_animations": [
+          {
+            "type": "UNLOCK",
+            "action": "FADE",
+            "duration": 10.0
+          }
+        ],
+        "internal_title": "Clock (Interactive)",
+        "viewgroup_items": [
+          {
+            "internal_type": "TextModule",
+            "text_family": "kfile://org.kustom.provider/fonts/Roboto.ttf",
+            "text_size": 180.0,
+            "internal_toggles": {
+              "paint_color": 10
+            },
+            "internal_formulas": {
+              "paint_color": "$if(gv(color) = \"Material You\", gv(A14/Ac), (ce(gv(Custom), lum, a100)))$"
+            },
+            "paint_color": "#FFF5A7FF",
+            "paint_mode": "ADD",
+            "fx_gradient_offset": 0
+          }
+        ]
+      },
+      {
+        "internal_type": "OverlapLayerModule",
+        "internal_title": "Complication 1 (Progress)",
+        "internal_toggles": {
+          "config_scale_value": 0
+        },
+        "internal_formulas": {
+          "config_scale_value": "-100"
+        },
+        "config_rotate_mode": "MANUAL",
+        "config_rotate_offset": 235.0,
+        "internal_animations": [
+          {
+            "type": "UNLOCK",
+            "action": "FADE",
+            "duration": 10.0,
+            "formula": "$if(si(ambient), 1, 0)$"
+          }
+        ],
+        "viewgroup_items": [
+          {
+            "internal_type": "OverlapLayerModule",
+            "internal_title": "Progress FG",
+            "viewgroup_items": [
+              {
+                "internal_type": "ShapeModule",
+                "internal_title": "Progress",
+                "internal_toggles": {
+                  "paint_color": 10,
+                  "shape_angle": 10
+                },
+                "internal_formulas": {
+                  "shape_angle": "$cd(1, rval)*70/cd(1, rmax)$",
+                  "paint_color": "$if(gv(color) = \"Material You\", gv(A14/Ac), (ce(gv(Custom), lum, a100)))$"
+                },
+                "internal_globals": {
+                  "paint_color": "leftcol"
+                },
+                "shape_type": "SLICE",
+                "shape_width": 690.0,
+                "shape_height": 15.0,
+                "shape_angle": 70.0,
+                "shape_rotate_offset": 145.0
+              },
+              {
+                "internal_type": "ShapeModule",
+                "internal_title": "Circle Left",
+                "shape_width": 15.0,
+                "internal_toggles": {
+                  "paint_color": 10
+                },
+                "internal_globals": {
+                  "paint_color": "leftcol"
+                },
+                "position_anchor": "TOP",
+                "shape_corners": 360,
+                "internal_formulas": {
+                  "paint_color": "$if(gv(color) = \"Material You\", gv(A14/Ac), (ce(gv(Custom), lum, a100)))$"
+                }
+              },
+              {
+                "internal_type": "OverlapLayerModule",
+                "internal_title": "Circle Right",
+                "config_rotate_mode": "MANUAL",
+                "config_rotate_offset": 70.0,
+                "internal_toggles": {
+                  "config_rotate_offset": 10
+                },
+                "internal_formulas": {
+                  "config_rotate_offset": "$cd(1, rval)*70/cd(1, rmax)$"
+                },
+                "viewgroup_items": [
+                  {
+                    "internal_type": "ShapeModule",
+                    "internal_title": "Circle Right",
+                    "shape_width": 15.0,
+                    "internal_toggles": {
+                      "paint_color": 10
+                    },
+                    "internal_globals": {
+                      "paint_color": "leftcol"
+                    },
+                    "position_padding_bottom": 675.0,
+                    "shape_corners": 360,
+                    "internal_formulas": {
+                      "paint_color": "$if(gv(color) = \"Material You\", gv(A14/Ac), (ce(gv(Custom), lum, a100)))$"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "internal_type": "OverlapLayerModule",
+            "internal_title": "Progress BG",
+            "config_alpha": 10.0,
+            "viewgroup_items": [
+              {
+                "internal_type": "ShapeModule",
+                "internal_title": "Progress",
+                "internal_toggles": {
+                  "paint_color": 0,
+                  "shape_angle": 0
+                },
+                "internal_formulas": {
+                  "shape_angle": "$bi(level)*70/100$"
+                },
+                "internal_globals": {
+                  "paint_color": "leftcol"
+                },
+                "shape_type": "SLICE",
+                "shape_width": 690.0,
+                "shape_height": 15.0,
+                "shape_angle": 70.0,
+                "shape_rotate_offset": 145.0
+              },
+              {
+                "internal_type": "ShapeModule",
+                "internal_title": "Circle Left",
+                "shape_width": 15.0,
+                "internal_toggles": {
+                  "paint_color": 0
+                },
+                "internal_globals": {
+                  "paint_color": "leftcol"
+                },
+                "position_anchor": "TOP",
+                "shape_corners": 360,
+                "internal_formulas": {
+                  "paint_color": "#41FFFFFF"
+                }
+              },
+              {
+                "internal_type": "OverlapLayerModule",
+                "internal_title": "Circle Right",
+                "config_rotate_mode": "MANUAL",
+                "config_rotate_offset": 70.0,
+                "internal_toggles": {
+                  "config_rotate_offset": 0
+                },
+                "internal_formulas": {
+                  "config_rotate_offset": "$bi(level)*70/100$"
+                },
+                "viewgroup_items": [
+                  {
+                    "internal_type": "ShapeModule",
+                    "internal_title": "Circle Right",
+                    "shape_width": 15.0,
+                    "internal_toggles": {
+                      "paint_color": 0
+                    },
+                    "internal_globals": {
+                      "paint_color": "leftcol"
+                    },
+                    "position_padding_bottom": 675.0,
+                    "shape_corners": 360,
+                    "internal_formulas": {
+                      "paint_color": "#41FFFFFF"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "internal_type": "StackLayerModule",
+        "internal_title": "Complication 1 (Info)",
+        "internal_toggles": {
+          "1": 0
+        },
+        "config_stacking": "HORIZONTAL_CENTER",
+        "config_margin": 5.0,
+        "position_anchor": "BOTTOMLEFT",
+        "position_offset_x": 120.0,
+        "position_offset_y": 115.0,
+        "internal_animations": [
+          {
+            "type": "UNLOCK",
+            "action": "FADE",
+            "duration": 10.0,
+            "formula": "$if(si(ambient), 1, 0)$",
+            "ease": "NORMAL"
+          }
+        ],
+        "viewgroup_items": [
+          {
+            "internal_type": "BitmapModule",
+            "internal_toggles": {
+              "bitmap_filter_color": 10,
+              "bitmap_bitmap": 10
+            },
+            "internal_globals": {
+              "bitmap_filter_color": "leftcol"
+            },
+            "bitmap_bitmap": "kfile://org.kustom.provider/bitmaps/IMG6d7412fea96967882d624b4e25c106f6",
+            "bitmap_width": 45.0,
+            "bitmap_filter": "COLORIZE",
+            "internal_formulas": {
+              "bitmap_filter_color": "$if(gv(color) = \"Material You\", gv(A14/Ac), (ce(gv(Custom), lum, a100)))$",
+              "bitmap_bitmap": "$cd(1, icon)$"
+            },
+            "bitmap_filter_color": "#FFFFFFFF"
+          },
+          {
+            "internal_type": "TextModule",
+            "internal_toggles": {
+              "text_family": 0,
+              "paint_color": 10
+            },
+            "internal_globals": {
+              "text_family": "fontcloc",
+              "paint_color": "leftcol"
+            },
+            "text_expression": "$tc(nfmt, mu(round, cd(1, rval)))$",
+            "text_size": 35.0,
+            "position_anchor": "CENTERLEFT",
+            "internal_formulas": {
+              "paint_color": "$if(gv(color) = \"Material You\", gv(A14/Ac), (ce(gv(Custom), lum, a100)))$"
+            },
+            "text_family": "kfile://org.kustom.provider/fonts/Roboto.ttf"
+          }
+        ]
+      },
+      {
+        "internal_type": "OverlapLayerModule",
+        "internal_title": "Complication 2 (Progress)",
+        "internal_toggles": {
+          "config_scale_value": 0
+        },
+        "internal_formulas": {
+          "config_scale_value": "-100"
+        },
+        "config_rotate_mode": "MANUAL",
+        "config_rotate_offset": 125.0,
+        "internal_animations": [
+          {
+            "type": "UNLOCK",
+            "action": "FADE",
+            "duration": 10.0,
+            "formula": "$if(si(ambient), 1, 0)$"
+          }
+        ],
+        "viewgroup_items": [
+          {
+            "internal_type": "OverlapLayerModule",
+            "internal_title": "Progress FG",
+            "config_rotate_mode": "FLIP_X",
+            "config_rotate_offset": 180.0,
+            "viewgroup_items": [
+              {
+                "internal_type": "ShapeModule",
+                "internal_title": "Progress",
+                "internal_toggles": {
+                  "paint_color": 10,
+                  "shape_angle": 10
+                },
+                "internal_formulas": {
+                  "shape_angle": "$cd(2, rval)*70/cd(2, rmax)$",
+                  "paint_color": "$if(gv(color) = \"Material You\", gv(A14/Ac), (ce(gv(Custom), lum, a100)))$"
+                },
+                "internal_globals": {
+                  "paint_color": "batt"
+                },
+                "shape_type": "SLICE",
+                "shape_width": 690.0,
+                "shape_height": 15.0,
+                "shape_angle": 6,
+                "shape_rotate_offset": 145.0,
+                "shape_rotate_mode": "DEG180"
+              },
+              {
+                "internal_type": "ShapeModule",
+                "internal_title": "Circle Left",
+                "shape_type": "CIRCLE",
+                "shape_width": 15.0,
+                "internal_toggles": {
+                  "paint_color": 10
+                },
+                "internal_globals": {
+                  "paint_color": "batt"
+                },
+                "position_anchor": "BOTTOM",
+                "internal_formulas": {
+                  "paint_color": "$if(gv(color) = \"Material You\", gv(A14/Ac), (ce(gv(Custom), lum, a100)))$"
+                }
+              },
+              {
+                "internal_type": "OverlapLayerModule",
+                "internal_title": "Circle Right",
+                "config_rotate_mode": "MANUAL",
+                "config_rotate_offset": 180.0,
+                "internal_toggles": {
+                  "config_rotate_offset": 10
+                },
+                "internal_formulas": {
+                  "config_rotate_offset": "$cd(2, rval)*70/cd(2, rmax)$"
+                },
+                "viewgroup_items": [
+                  {
+                    "internal_type": "ShapeModule",
+                    "internal_title": "Circle Left",
+                    "shape_type": "CIRCLE",
+                    "shape_width": 15.0,
+                    "internal_toggles": {
+                      "paint_color": 10
+                    },
+                    "internal_globals": {
+                      "paint_color": "batt"
+                    },
+                    "internal_formulas": {
+                      "paint_color": "$if(gv(color) = \"Material You\", gv(A14/Ac), (ce(gv(Custom), lum, a100)))$"
+                    },
+                    "position_padding_top": 675.0
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "internal_type": "OverlapLayerModule",
+            "internal_title": "Progress BG",
+            "config_rotate_mode": "FLIP_X",
+            "config_rotate_offset": 180.0,
+            "config_alpha": 10.0,
+            "viewgroup_items": [
+              {
+                "internal_type": "ShapeModule",
+                "internal_title": "Progress",
+                "internal_toggles": {
+                  "paint_color": 10,
+                  "shape_angle": 0
+                },
+                "internal_formulas": {
+                  "shape_angle": "$bi(level)*70/100$",
+                  "paint_color": "$if(bi(level)<=20, gv(lowbat), gv(batt))$"
+                },
+                "internal_globals": {
+                  "paint_color": "batt"
+                },
+                "shape_type": "SLICE",
+                "shape_width": 690.0,
+                "shape_height": 15.0,
+                "shape_angle": 70.0,
+                "shape_rotate_offset": 145.0,
+                "shape_rotate_mode": "DEG180"
+              },
+              {
+                "internal_type": "ShapeModule",
+                "internal_title": "Circle Left",
+                "shape_type": "CIRCLE",
+                "shape_width": 15.0,
+                "internal_toggles": {
+                  "paint_color": 10
+                },
+                "internal_globals": {
+                  "paint_color": "batt"
+                },
+                "position_anchor": "BOTTOM",
+                "internal_formulas": {
+                  "paint_color": "$if(bi(level)<=20, gv(lowbat), gv(batt))$"
+                }
+              },
+              {
+                "internal_type": "OverlapLayerModule",
+                "internal_title": "Circle Right",
+                "config_rotate_mode": "MANUAL",
+                "config_rotate_offset": 250.0,
+                "internal_toggles": {
+                  "config_rotate_offset": 0
+                },
+                "internal_formulas": {
+                  "config_rotate_offset": "$180+bi(level)*70/100$"
+                },
+                "viewgroup_items": [
+                  {
+                    "internal_type": "ShapeModule",
+                    "internal_title": "Circle Left",
+                    "shape_type": "CIRCLE",
+                    "shape_width": 15.0,
+                    "internal_toggles": {
+                      "paint_color": 10
+                    },
+                    "internal_globals": {
+                      "paint_color": "batt"
+                    },
+                    "position_padding_bottom": 675.0,
+                    "internal_formulas": {
+                      "paint_color": "$if(bi(level)<=20, gv(lowbat), gv(batt))$"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "internal_type": "StackLayerModule",
+        "internal_title": "Complication 2 (Info)",
+        "internal_toggles": {
+          "1": 0
+        },
+        "config_stacking": "HORIZONTAL_CENTER",
+        "config_margin": 5.0,
+        "position_anchor": "BOTTOMRIGHT",
+        "position_offset_x": 120.0,
+        "position_offset_y": 115.0,
+        "internal_animations": [
+          {
+            "type": "UNLOCK",
+            "action": "FADE",
+            "duration": 10.0,
+            "formula": "$if(si(ambient), 1, 0)$"
+          }
+        ],
+        "viewgroup_items": [
+          {
+            "internal_type": "TextModule",
+            "internal_toggles": {
+              "text_family": 0,
+              "paint_color": 10
+            },
+            "internal_globals": {
+              "text_family": "fontcloc",
+              "paint_color": "leftcol"
+            },
+            "text_expression": "$tc(nfmt, mu(round, cd(2, rval)))$",
+            "text_size": 35.0,
+            "position_anchor": "CENTERLEFT",
+            "internal_formulas": {
+              "paint_color": "$if(gv(color) = \"Material You\", gv(A14/Ac), (ce(gv(Custom), lum, a100)))$"
+            },
+            "text_family": "kfile://org.kustom.provider/fonts/Roboto.ttf",
+            "text_align": "RIGHT"
+          },
+          {
+            "internal_type": "BitmapModule",
+            "internal_toggles": {
+              "bitmap_filter_color": 10,
+              "bitmap_bitmap": 10
+            },
+            "internal_globals": {
+              "bitmap_filter_color": "leftcol"
+            },
+            "bitmap_bitmap": "kfile://org.kustom.provider/bitmaps/IMG6d7412fea96967882d624b4e25c106f6",
+            "bitmap_width": 45.0,
+            "bitmap_filter": "COLORIZE",
+            "internal_formulas": {
+              "bitmap_filter_color": "$if(gv(color) = \"Material You\", gv(A14/Ac), (ce(gv(Custom), lum, a100)))$",
+              "bitmap_bitmap": "$cd(2, icon)$"
+            },
+            "bitmap_filter_color": "#FFFFFFFF"
+          }
+        ]
+      }
+    ]
+  }
+}
