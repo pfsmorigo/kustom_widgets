@@ -1,12 +1,12 @@
 {
   "preset_info": {
     "version": 12,
-    "title": "SmowPanel",
+    "title": "SmowPanelNiagara",
     "description": "All in one",
     "author": "Paulo Flabiano Smorigo",
     "email": "pfsmorigo@gmail.com",
-    "width": 1440,
-    "height": 528,
+    "width": 1050,
+    "height": 337,
     "features": "FITNESS TRAFFIC",
     "release": 363228709,
     "locked": false,
@@ -19,7 +19,7 @@
       }
     ],
     "internal_type": "RootLayerModule",
-    "config_scale_value": 38.50434,
+    "config_scale_value": 16.189325,
     "globals_list": {
       "font": {
         "index": 3,
@@ -111,20 +111,13 @@
       {
         "internal_type": "StackLayerModule",
         "config_stacking": "VERTICAL_CENTER",
-        "config_scale_value": 130.0,
-        "position_offset_y": -104.0,
+        "config_scale_value": 300.0,
         "viewgroup_items": [
-          {
-            "internal_type": "TextModule",
-            "text_size": 70.0,
-            "text_expression": "$nc(operator)$ ($nc(dtype)$)",
-            "position_padding_bottom": 54.0
-          },
           {
             "internal_type": "StackLayerModule",
             "config_scale_value": 220.0,
             "config_stacking": "HORIZONTAL_CENTER",
-            "config_margin": 70.0,
+            "config_margin": 60.0,
             "viewgroup_items": [
               {
                 "internal_type": "OverlapLayerModule",
@@ -627,6 +620,13 @@
                 ]
               }
             ]
+          },
+          {
+            "internal_type": "TextModule",
+            "text_size": 70.0,
+            "text_expression": "$nc(operator)$ ($nc(dtype)$)",
+            "position_padding_bottom": 50.0,
+            "position_padding_top": 50.0
           }
         ]
       }
