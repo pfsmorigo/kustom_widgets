@@ -1,14 +1,14 @@
 {
   "preset_info": {
-    "version": 12,
-    "title": "SmowPanelNiagara",
+    "version": 14,
+    "title": "SmowPanel",
     "description": "All in one",
     "author": "Paulo Flabiano Smorigo",
     "email": "pfsmorigo@gmail.com",
     "width": 1050,
-    "height": 337,
-    "features": "FITNESS TRAFFIC",
-    "release": 363228709,
+    "height": 379,
+    "features": "LOCATION FITNESS TRAFFIC DOWNLOAD SIGNAL BLUETOOTH",
+    "release": 373314510,
     "locked": false,
     "pflags": 0
   },
@@ -19,7 +19,7 @@
       }
     ],
     "internal_type": "RootLayerModule",
-    "config_scale_value": 16.189325,
+    "config_scale_value": 17.0,
     "globals_list": {
       "font": {
         "index": 3,
@@ -53,7 +53,7 @@
         "global_formula": "",
         "min": 0,
         "max": 720,
-        "value": 28.0
+        "value": 24.0
       },
       "line": {
         "index": 7,
@@ -105,14 +105,72 @@
         "title": "Backgrnd",
         "global_formula": "",
         "value": "#88FFFFFF"
+      },
+      "fontt": {
+        "index": 14,
+        "type": "NUMBER",
+        "title": "FontT",
+        "min": 0,
+        "max": 720,
+        "value": 70.0
       }
     },
     "viewgroup_items": [
       {
         "internal_type": "StackLayerModule",
         "config_stacking": "VERTICAL_CENTER",
-        "config_scale_value": 300.0,
+        "config_scale_value": 276.0,
         "viewgroup_items": [
+          {
+            "internal_type": "StackLayerModule",
+            "config_stacking": "HORIZONTAL_CENTER",
+            "viewgroup_items": [
+              {
+                "internal_type": "TextModule",
+                "text_size": 70.0,
+                "text_expression": "$nc(operator)$ ($nc(dtype)$)",
+                "position_padding_bottom": 50.0,
+                "position_padding_top": 50.0,
+                "position_padding_left": 50.0,
+                "position_padding_right": 50.0,
+                "internal_toggles": {
+                  "position_padding_left": 100,
+                  "position_padding_right": 100,
+                  "position_padding_top": 100,
+                  "position_padding_bottom": 100,
+                  "text_size": 100,
+                  "text_family": 0
+                },
+                "internal_globals": {
+                  "position_padding_left": "padding",
+                  "position_padding_right": "padding",
+                  "position_padding_top": "padding",
+                  "position_padding_bottom": "padding",
+                  "text_size": "fontt",
+                  "text_family": "font"
+                }
+              },
+              {
+                "internal_type": "TextModule",
+                "text_expression": "$nc(wsig)$ $nc(wrssi)$ $nc(wspeed)$",
+                "text_size": 70.0,
+                "internal_toggles": {
+                  "position_padding_left": 100,
+                  "position_padding_right": 100,
+                  "position_padding_top": 100,
+                  "position_padding_bottom": 100,
+                  "text_size": 100
+                },
+                "internal_globals": {
+                  "position_padding_left": "padding",
+                  "position_padding_right": "padding",
+                  "position_padding_top": "padding",
+                  "position_padding_bottom": "padding",
+                  "text_size": "fontt"
+                }
+              }
+            ]
+          },
           {
             "internal_type": "StackLayerModule",
             "config_scale_value": 220.0,
@@ -126,7 +184,7 @@
                   {
                     "type": "SINGLE_TAP",
                     "action": "LAUNCH_ACTIVITY",
-                    "intent": "intent:#Intent;component=com.android.settings/.Settings%24PowerUsageSummaryActivity;S.org.kustom.intent.label=Settings;end"
+                    "intent": "intent:#Intent;component=com.android.settings/.Settings%24HighPowerApplicationsActivity;S.org.kustom.intent.label=Settings;end"
                   }
                 ],
                 "viewgroup_items": [
@@ -215,7 +273,7 @@
                       "position_padding_bottom": "padding",
                       "text_size": "font-"
                     },
-                    "text_expression": "$mu(round, bi(tempc), 1)$°C"
+                    "text_expression": "$if(nc(acount) > 0, nc(abatt, 0)+tc(low, \"%\"), mu(round, bi(tempc), 1)+°C)$ "
                   }
                 ]
               },
@@ -515,7 +573,7 @@
                       "position_padding_bottom": "padding",
                       "text_size": "font-"
                     },
-                    "text_expression": "$rm(fsfree, \"/storage/056F-16FE\")$"
+                    "text_expression": "$rm(mfree)$"
                   }
                 ]
               },
@@ -622,11 +680,67 @@
             ]
           },
           {
-            "internal_type": "TextModule",
-            "text_size": 70.0,
-            "text_expression": "$nc(operator)$ ($nc(dtype)$)",
-            "position_padding_bottom": 50.0,
-            "position_padding_top": 50.0
+            "internal_type": "StackLayerModule",
+            "config_stacking": "HORIZONTAL_CENTER",
+            "viewgroup_items": [
+              {
+                "internal_type": "TextModule",
+                "text_expression": "$mu(round, wg(\"https://api.cryptowat.ch/markets/gdax/btcusd/summary\",json, .result.price.last)/1000)$k",
+                "text_size": 70.0,
+                "position_padding_left": 50.0,
+                "position_padding_right": 50.0,
+                "internal_toggles": {
+                  "position_padding_left": 100,
+                  "position_padding_right": 100,
+                  "position_padding_top": 100,
+                  "position_padding_bottom": 100,
+                  "text_size": 100
+                },
+                "internal_globals": {
+                  "position_padding_left": "padding",
+                  "position_padding_right": "padding",
+                  "position_padding_top": "padding",
+                  "position_padding_bottom": "padding",
+                  "text_size": "fontt"
+                }
+              },
+              {
+                "internal_type": "TextModule",
+                "internal_toggles": {
+                  "text_size": 100,
+                  "position_padding_left": 100,
+                  "position_padding_right": 100,
+                  "position_padding_top": 100,
+                  "position_padding_bottom": 100
+                },
+                "internal_globals": {
+                  "text_size": "fontt",
+                  "position_padding_left": "padding",
+                  "position_padding_right": "padding",
+                  "position_padding_top": "padding",
+                  "position_padding_bottom": "padding"
+                },
+                "text_expression": "$df(\"hh:mma\", ai(sunrise))$-$df(\"hh:mma\", ai(sunset))$"
+              },
+              {
+                "internal_type": "TextModule",
+                "internal_toggles": {
+                  "text_size": 100,
+                  "position_padding_left": 100,
+                  "position_padding_right": 100,
+                  "position_padding_top": 100,
+                  "position_padding_bottom": 100
+                },
+                "internal_globals": {
+                  "text_size": "fontt",
+                  "position_padding_left": "padding",
+                  "position_padding_right": "padding",
+                  "position_padding_top": "padding",
+                  "position_padding_bottom": "padding"
+                },
+                "text_expression": "$li(altm)$m"
+              }
+            ]
           }
         ]
       }
