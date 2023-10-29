@@ -1,0 +1,635 @@
+{
+  "preset_info": {
+    "version": 12,
+    "title": "SmowPanel",
+    "description": "All in one",
+    "author": "Paulo Flabiano Smorigo",
+    "email": "pfsmorigo@gmail.com",
+    "width": 1440,
+    "height": 528,
+    "features": "FITNESS TRAFFIC",
+    "release": 363228709,
+    "locked": false,
+    "pflags": 0
+  },
+  "preset_root": {
+    "internal_events": [
+      {
+        "action": "KUSTOM_ACTION"
+      }
+    ],
+    "internal_type": "RootLayerModule",
+    "config_scale_value": 38.50434,
+    "globals_list": {
+      "font": {
+        "index": 3,
+        "type": "FONT",
+        "title": "Font",
+        "global_formula": "",
+        "value": "kfile://org.kustom.provider/fonts/Roboto-Black.ttf"
+      },
+      "padding": {
+        "index": 4,
+        "type": "NUMBER",
+        "title": "Padding",
+        "global_formula": "",
+        "min": 0,
+        "max": 720,
+        "value": 48.0
+      },
+      "font-": {
+        "index": 5,
+        "type": "NUMBER",
+        "title": "Font-",
+        "global_formula": "",
+        "min": 0,
+        "max": 720,
+        "value": 14.0
+      },
+      "font+": {
+        "index": 6,
+        "type": "NUMBER",
+        "title": "Font+",
+        "global_formula": "",
+        "min": 0,
+        "max": 720,
+        "value": 28.0
+      },
+      "line": {
+        "index": 7,
+        "type": "NUMBER",
+        "title": "Line",
+        "global_formula": "",
+        "min": 0,
+        "max": 720,
+        "value": 7.0
+      },
+      "color 1": {
+        "index": 8,
+        "type": "COLOR",
+        "title": "Color 1",
+        "global_formula": "",
+        "value": "#FFFF4085"
+      },
+      "color 2": {
+        "index": 9,
+        "type": "COLOR",
+        "title": "Color 2",
+        "global_formula": "",
+        "value": "#FFFF7400"
+      },
+      "color 3": {
+        "index": 10,
+        "type": "COLOR",
+        "title": "Color 3",
+        "global_formula": "",
+        "value": "#FFFFFB40"
+      },
+      "color 4": {
+        "index": 11,
+        "type": "COLOR",
+        "title": "Color 4",
+        "global_formula": "",
+        "value": "#FF65FF40"
+      },
+      "color 5": {
+        "index": 12,
+        "type": "COLOR",
+        "title": "Color 5",
+        "global_formula": "",
+        "value": "#FF6699FF"
+      },
+      "backgrnd": {
+        "index": 13,
+        "type": "COLOR",
+        "title": "Backgrnd",
+        "global_formula": "",
+        "value": "#88FFFFFF"
+      }
+    },
+    "viewgroup_items": [
+      {
+        "internal_type": "StackLayerModule",
+        "config_stacking": "VERTICAL_CENTER",
+        "config_scale_value": 130.0,
+        "position_offset_y": -104.0,
+        "viewgroup_items": [
+          {
+            "internal_type": "TextModule",
+            "text_size": 70.0,
+            "text_expression": "$nc(operator)$ ($nc(dtype)$)",
+            "position_padding_bottom": 54.0
+          },
+          {
+            "internal_type": "StackLayerModule",
+            "config_scale_value": 220.0,
+            "config_stacking": "HORIZONTAL_CENTER",
+            "config_margin": 70.0,
+            "viewgroup_items": [
+              {
+                "internal_type": "OverlapLayerModule",
+                "internal_title": "Battery",
+                "internal_events": [
+                  {
+                    "type": "SINGLE_TAP",
+                    "action": "LAUNCH_ACTIVITY",
+                    "intent": "intent:#Intent;component=com.android.settings/.Settings%24PowerUsageSummaryActivity;S.org.kustom.intent.label=Settings;end"
+                  }
+                ],
+                "viewgroup_items": [
+                  {
+                    "internal_type": "ShapeModule",
+                    "internal_title": "Background",
+                    "shape_type": "SLICE",
+                    "shape_width": 100.0,
+                    "shape_height": 10.0,
+                    "shape_angle": 360,
+                    "internal_toggles": {
+                      "shape_width": 0,
+                      "shape_height": 100,
+                      "paint_color": 100
+                    },
+                    "internal_globals": {
+                      "shape_width": "line",
+                      "shape_height": "line",
+                      "paint_color": "backgrnd"
+                    }
+                  },
+                  {
+                    "internal_type": "ShapeModule",
+                    "internal_title": "Progress",
+                    "shape_type": "SLICE",
+                    "shape_width": 100.0,
+                    "shape_height": 10.0,
+                    "shape_angle": 224,
+                    "paint_color": "#FF6C7CFF",
+                    "internal_toggles": {
+                      "shape_angle": 10,
+                      "shape_height": 100,
+                      "paint_color": 100
+                    },
+                    "internal_formulas": {
+                      "shape_angle": "$360/100*bi(level)$"
+                    },
+                    "internal_globals": {
+                      "shape_height": "line",
+                      "paint_color": "color 1"
+                    }
+                  },
+                  {
+                    "internal_type": "TextModule",
+                    "internal_title": "Title",
+                    "internal_toggles": {
+                      "text_family": 100,
+                      "position_padding_top": 0,
+                      "position_padding_bottom": 100,
+                      "text_size": 100
+                    },
+                    "internal_globals": {
+                      "text_family": "font",
+                      "position_padding_top": "paddingt",
+                      "position_padding_bottom": "padding",
+                      "text_size": "font-"
+                    },
+                    "position_padding_bottom": 5.0,
+                    "text_expression": "Battery"
+                  },
+                  {
+                    "internal_type": "TextModule",
+                    "internal_title": "Main Text",
+                    "internal_toggles": {
+                      "text_family": 100,
+                      "text_size": 110
+                    },
+                    "internal_globals": {
+                      "text_family": "font",
+                      "text_size": "font+"
+                    },
+                    "text_expression": "$bi(level)$%"
+                  },
+                  {
+                    "internal_type": "TextModule",
+                    "internal_title": "Complementary",
+                    "internal_toggles": {
+                      "text_family": 100,
+                      "position_padding_top": 100,
+                      "position_padding_bottom": 0,
+                      "text_size": 100
+                    },
+                    "internal_globals": {
+                      "text_family": "font",
+                      "position_padding_top": "padding",
+                      "position_padding_bottom": "padding",
+                      "text_size": "font-"
+                    },
+                    "text_expression": "$mu(round, bi(tempc), 1)$°C"
+                  }
+                ]
+              },
+              {
+                "internal_type": "OverlapLayerModule",
+                "internal_title": "Alarm",
+                "internal_events": [
+                  {
+                    "type": "SINGLE_TAP",
+                    "action": "LAUNCH_APP",
+                    "intent": "intent:#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;component=com.google.android.deskclock/com.android.deskclock.DeskClock;S.org.kustom.intent.label=Clock;end"
+                  }
+                ],
+                "viewgroup_items": [
+                  {
+                    "internal_type": "ShapeModule",
+                    "internal_title": "Background",
+                    "shape_type": "SLICE",
+                    "shape_width": 100.0,
+                    "shape_height": 10.0,
+                    "shape_angle": 360,
+                    "internal_toggles": {
+                      "shape_width": 0,
+                      "shape_height": 100,
+                      "paint_color": 100
+                    },
+                    "internal_globals": {
+                      "shape_width": "line",
+                      "shape_height": "line",
+                      "paint_color": "backgrnd"
+                    }
+                  },
+                  {
+                    "internal_type": "ShapeModule",
+                    "internal_title": "Progress",
+                    "shape_type": "SLICE",
+                    "shape_width": 100.0,
+                    "shape_height": 10.0,
+                    "shape_angle": 224,
+                    "paint_color": "#FF6C7CFF",
+                    "internal_toggles": {
+                      "shape_angle": 10,
+                      "shape_height": 100,
+                      "paint_color": 100
+                    },
+                    "internal_formulas": {
+                      "shape_angle": "$(df(S, si(alarmd))-df(S))*360/86400$"
+                    },
+                    "internal_globals": {
+                      "shape_height": "line",
+                      "paint_color": "color 2"
+                    }
+                  },
+                  {
+                    "internal_type": "TextModule",
+                    "internal_title": "Title",
+                    "internal_toggles": {
+                      "text_family": 100,
+                      "position_padding_top": 0,
+                      "position_padding_bottom": 100,
+                      "text_size": 100
+                    },
+                    "internal_globals": {
+                      "text_family": "font",
+                      "position_padding_top": "paddingt",
+                      "position_padding_bottom": "padding",
+                      "text_size": "font-"
+                    },
+                    "position_padding_bottom": 5.0,
+                    "text_expression": "Alarm"
+                  },
+                  {
+                    "internal_type": "TextModule",
+                    "internal_title": "Main Text",
+                    "internal_toggles": {
+                      "text_family": 100,
+                      "text_size": 110
+                    },
+                    "internal_globals": {
+                      "text_family": "font",
+                      "text_size": "font+"
+                    },
+                    "text_expression": "$df(\"HH:mm\", si(alarmd))$"
+                  },
+                  {
+                    "internal_type": "TextModule",
+                    "internal_title": "Complementary",
+                    "internal_toggles": {
+                      "text_family": 100,
+                      "position_padding_top": 100,
+                      "position_padding_bottom": 0,
+                      "text_size": 100
+                    },
+                    "internal_globals": {
+                      "text_family": "font",
+                      "position_padding_top": "padding",
+                      "position_padding_bottom": "padding",
+                      "text_size": "font-"
+                    },
+                    "text_expression": "$tf(si(alarmd), H:mm)$"
+                  }
+                ]
+              },
+              {
+                "internal_type": "OverlapLayerModule",
+                "internal_title": "Steps",
+                "internal_events": [
+                  {
+                    "type": "SINGLE_TAP",
+                    "action": "LAUNCH_APP",
+                    "intent": "intent:#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;component=com.google.android.apps.fitness/.welcome.WelcomeActivity;S.org.kustom.intent.label=Fit;end"
+                  }
+                ],
+                "viewgroup_items": [
+                  {
+                    "internal_type": "ShapeModule",
+                    "internal_title": "Background",
+                    "shape_type": "SLICE",
+                    "shape_width": 100.0,
+                    "shape_height": 10.0,
+                    "shape_angle": 360,
+                    "internal_toggles": {
+                      "shape_width": 0,
+                      "shape_height": 100,
+                      "paint_color": 100
+                    },
+                    "internal_globals": {
+                      "shape_width": "line",
+                      "shape_height": "line",
+                      "paint_color": "backgrnd"
+                    }
+                  },
+                  {
+                    "internal_type": "ShapeModule",
+                    "internal_title": "Progress",
+                    "shape_type": "SLICE",
+                    "shape_width": 100.0,
+                    "shape_height": 10.0,
+                    "shape_angle": 224,
+                    "paint_color": "#FF6C7CFF",
+                    "internal_toggles": {
+                      "shape_angle": 10,
+                      "shape_height": 100,
+                      "paint_color": 100
+                    },
+                    "internal_formulas": {
+                      "shape_angle": "$360*fd(dist)/10000$"
+                    },
+                    "internal_globals": {
+                      "shape_height": "line",
+                      "paint_color": "color 3"
+                    }
+                  },
+                  {
+                    "internal_type": "TextModule",
+                    "internal_title": "Title",
+                    "internal_toggles": {
+                      "text_family": 100,
+                      "position_padding_top": 0,
+                      "position_padding_bottom": 100,
+                      "text_size": 100
+                    },
+                    "internal_globals": {
+                      "text_family": "font",
+                      "position_padding_top": "paddingt",
+                      "position_padding_bottom": "padding",
+                      "text_size": "font-"
+                    },
+                    "position_padding_bottom": 5.0,
+                    "text_expression": "Steps"
+                  },
+                  {
+                    "internal_type": "TextModule",
+                    "internal_title": "Main Text",
+                    "internal_toggles": {
+                      "text_family": 100,
+                      "text_size": 110
+                    },
+                    "internal_globals": {
+                      "text_family": "font",
+                      "text_size": "font+"
+                    },
+                    "text_expression": "$fd(steps)$"
+                  },
+                  {
+                    "internal_type": "TextModule",
+                    "internal_title": "Complementary",
+                    "internal_toggles": {
+                      "text_family": 100,
+                      "position_padding_top": 100,
+                      "position_padding_bottom": 0,
+                      "text_size": 100
+                    },
+                    "internal_globals": {
+                      "text_family": "font",
+                      "position_padding_top": "padding",
+                      "position_padding_bottom": "padding",
+                      "text_size": "font-"
+                    },
+                    "text_expression": "$mu(round, fd(dist)/1000, 1)$km"
+                  }
+                ]
+              },
+              {
+                "internal_type": "OverlapLayerModule",
+                "internal_title": "Free",
+                "internal_events": [
+                  {
+                    "type": "SINGLE_TAP",
+                    "action": "LAUNCH_ACTIVITY",
+                    "intent": "intent:#Intent;component=com.android.settings/.Settings%24StorageUseActivity;S.org.kustom.intent.label=Settings;end"
+                  }
+                ],
+                "viewgroup_items": [
+                  {
+                    "internal_type": "ShapeModule",
+                    "internal_title": "Background",
+                    "shape_type": "SLICE",
+                    "shape_width": 100.0,
+                    "shape_height": 10.0,
+                    "shape_angle": 360,
+                    "internal_toggles": {
+                      "shape_width": 0,
+                      "shape_height": 100,
+                      "paint_color": 100
+                    },
+                    "internal_globals": {
+                      "shape_width": "line",
+                      "shape_height": "line",
+                      "paint_color": "backgrnd"
+                    }
+                  },
+                  {
+                    "internal_type": "ShapeModule",
+                    "internal_title": "Progress",
+                    "shape_type": "SLICE",
+                    "shape_width": 100.0,
+                    "shape_height": 10.0,
+                    "shape_angle": 224,
+                    "paint_color": "#FF6C7CFF",
+                    "internal_toggles": {
+                      "shape_angle": 10,
+                      "shape_height": 100,
+                      "paint_color": 100
+                    },
+                    "internal_formulas": {
+                      "shape_angle": "$360-(360*(rm(fsfree, int)/rm(fstot, int)))$"
+                    },
+                    "internal_globals": {
+                      "shape_height": "line",
+                      "paint_color": "color 4"
+                    }
+                  },
+                  {
+                    "internal_type": "TextModule",
+                    "internal_title": "Title",
+                    "internal_toggles": {
+                      "text_family": 100,
+                      "position_padding_top": 0,
+                      "position_padding_bottom": 100,
+                      "text_size": 100
+                    },
+                    "internal_globals": {
+                      "text_family": "font",
+                      "position_padding_top": "paddingt",
+                      "position_padding_bottom": "padding",
+                      "text_size": "font-"
+                    },
+                    "position_padding_bottom": 5.0,
+                    "text_expression": "Free"
+                  },
+                  {
+                    "internal_type": "TextModule",
+                    "internal_title": "Main Text",
+                    "internal_toggles": {
+                      "text_family": 100,
+                      "text_size": 110
+                    },
+                    "internal_globals": {
+                      "text_family": "font",
+                      "text_size": "font+"
+                    },
+                    "text_expression": "$rm(fsfree, int)$"
+                  },
+                  {
+                    "internal_type": "TextModule",
+                    "internal_title": "Complementary",
+                    "internal_toggles": {
+                      "text_family": 100,
+                      "position_padding_top": 100,
+                      "position_padding_bottom": 0,
+                      "text_size": 100
+                    },
+                    "internal_globals": {
+                      "text_family": "font",
+                      "position_padding_top": "padding",
+                      "position_padding_bottom": "padding",
+                      "text_size": "font-"
+                    },
+                    "text_expression": "$rm(fsfree, \"/storage/056F-16FE\")$"
+                  }
+                ]
+              },
+              {
+                "internal_type": "OverlapLayerModule",
+                "internal_title": "Data",
+                "internal_events": [
+                  {
+                    "type": "SINGLE_TAP",
+                    "action": "LAUNCH_ACTIVITY",
+                    "intent": "intent:#Intent;component=com.android.settings/.Settings%24DataUsageSummaryActivity;S.org.kustom.intent.label=Settings;end"
+                  }
+                ],
+                "viewgroup_items": [
+                  {
+                    "internal_type": "ShapeModule",
+                    "internal_title": "Background",
+                    "shape_type": "SLICE",
+                    "shape_width": 100.0,
+                    "shape_height": 10.0,
+                    "shape_angle": 360,
+                    "internal_toggles": {
+                      "shape_width": 0,
+                      "shape_height": 100,
+                      "paint_color": 100
+                    },
+                    "internal_globals": {
+                      "shape_width": "line",
+                      "shape_height": "line",
+                      "paint_color": "backgrnd"
+                    }
+                  },
+                  {
+                    "internal_type": "TextModule",
+                    "internal_title": "Main Text",
+                    "internal_toggles": {
+                      "text_family": 100,
+                      "text_size": 110
+                    },
+                    "internal_globals": {
+                      "text_family": "font",
+                      "text_size": "font+"
+                    },
+                    "text_expression": "$mu(round, ts(mt, m, r0d), 1)$"
+                  },
+                  {
+                    "internal_type": "ShapeModule",
+                    "internal_title": "Progress",
+                    "shape_type": "SLICE",
+                    "shape_width": 100.0,
+                    "shape_height": 10.0,
+                    "shape_angle": 224,
+                    "paint_color": "#FF6C7CFF",
+                    "internal_toggles": {
+                      "shape_angle": 10,
+                      "shape_height": 100,
+                      "paint_color": 100
+                    },
+                    "internal_formulas": {
+                      "shape_angle": "$360-(360*(ts(mt, m, if(df(d)<28, 28dr1M, 28d))))/6000$"
+                    },
+                    "internal_globals": {
+                      "shape_height": "line",
+                      "paint_color": "color 5"
+                    }
+                  },
+                  {
+                    "internal_type": "TextModule",
+                    "internal_title": "Title",
+                    "internal_toggles": {
+                      "text_family": 100,
+                      "position_padding_top": 0,
+                      "position_padding_bottom": 100,
+                      "text_size": 100
+                    },
+                    "internal_globals": {
+                      "text_family": "font",
+                      "position_padding_top": "paddingt",
+                      "position_padding_bottom": "padding",
+                      "text_size": "font-"
+                    },
+                    "position_padding_bottom": 5.0,
+                    "text_expression": "Data"
+                  },
+                  {
+                    "internal_type": "TextModule",
+                    "internal_title": "Complementary",
+                    "internal_toggles": {
+                      "text_family": 100,
+                      "position_padding_top": 100,
+                      "position_padding_bottom": 0,
+                      "text_size": 100
+                    },
+                    "internal_globals": {
+                      "text_family": "font",
+                      "position_padding_top": "padding",
+                      "position_padding_bottom": "padding",
+                      "text_size": "font-"
+                    },
+                    "text_expression": "$mu(round, ts(mt, m, if(df(d)<28, 28dr1M, 28d)))$"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
