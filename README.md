@@ -1,1 +1,3 @@
-# kustom_widgets
+# Kustom Widgets
+
+Repository to keep created widgets
